@@ -243,6 +243,7 @@ input{
 .submitbutton:hover{
     box-shadow: none;
     color: var(--amarillo);
+    cursor: pointer;
 }
 .categories{
     display: flex;
@@ -252,17 +253,17 @@ input{
     color: var(--blanco);
     gap: 30px;
 }
-.catcont{
+.productContainer{
     display: flex;
     justify-content:center;
     flex-wrap: wrap;
     gap: 20px;
     padding: 2rem;
 }
-.catcont img{
+.productContainer img{
     height: 200px;
 }
-.catitem{
+.item{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -274,14 +275,25 @@ input{
 -webkit-box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
 -moz-box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
 }
-.catitem img{
+.item img{
     transition: 0.5s all ease-in-out;
     overflow: hidden;
     z-index: 2;
 }
-.catitem img:hover{
+.item img:hover{
     transform: scale(1.1);
     overflow: hidden;
+}
+.divDeUtilidad{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+.addItems{
+    display: flex;
+    padding-left: auto;
+    padding-right: auto;
+    align-items: center;
 }
 .valor{
     display: flex;
@@ -332,6 +344,7 @@ input{
 }
 .benefitem:hover{
     background-color: var(--amarillo);
+    cursor: pointer;
 }
 .benefitem a:hover{
     color: var(--negro);
@@ -402,6 +415,42 @@ footer a:hover{
     border-top: 2px;
     width: 50%;
     height: 2px;
+}
+.hidden{
+    display: none;
+}
+.categories{
+    display: flex;
+    flex-direction: row;
+}
+.category{
+    background-color: var(--negro);
+    color: var(--blanco);
+    border-style: solid;
+    border-color:var(--negro);
+     font-weight: 700;
+     box-shadow: -5px 5px 0px 0px var(--amarillo);
+     transition: all 0.3s;
+}
+.category:hover{
+    box-shadow: none;
+    color: var(--amarillo);
+    cursor: pointer;
+}
+.showMoreButton{
+    background-color: var(--negro);
+    color: var(--blanco);
+    border-style: solid;
+    border-color:var(--negro);
+     font-weight: 700;
+     box-shadow: -5px 5px 0px 0px var(--amarillo);
+     transition: all 0.3s;
+     margin-bottom: 2rem;
+}
+.showMoreButton:hover{
+    box-shadow: none;
+    color: var(--amarillo);
+    cursor: pointer;
 }
 @media (max-width:992px){
     body{
