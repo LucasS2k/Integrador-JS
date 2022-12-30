@@ -46,12 +46,12 @@ const changeShowMore = (category) => {
     moreBtn.classList.add("hidden");
 }
 
-// const btnActive = (selectedCategory) => {
-//     const categories = [...categories]
-//     categories.forEach( (categoryBtn) => {
-//        if (categoryBtn.dataset.category)
-//     })
-// }
+ const btnActive = (selectedCategory) => {
+     const categories = [...categories]
+     categories.forEach( (categoryBtn) => {
+      if (categoryBtn.dataset.category)
+  })
+ }
 
 const init = () => {
     renderProducts();
