@@ -1,5 +1,8 @@
 // Contenedor de productos
 const products = document.querySelector(".productContainer");
+// Botones de categorias
+const categories = document.querySelector(".categories")
+const categoriesList = document.querySelectorAll(".category")
 // Carrito
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 // Guardado de carrito en local storage
@@ -25,7 +28,7 @@ const renderDividedProducts = (index = 0) => {
 }
 
 const renderFilteredProducts = (category) => {
-    const productsFilter = productsData.filter((product) => {
+    const productsFilter = productsList.filter((product) => {
         return product.category === category;
     });
     products.innerHTML = productsFilter.map(renderProduct).join("");
@@ -47,13 +50,45 @@ const changeShowMore = (category) => {
 }
 
  const btnActive = (selectedCategory) => {
-     const categories = [...categories]
+     const categories = [...categoriesList]
      categories.forEach( (categoryBtn) => {
-      if (categoryBtn.dataset.category)
+      if (categoryBtn.dataset.category !== selectedCategory){
+        categoryBtn.classList.remove("active");
+        return;
+      }
+      categoryBtn.classList.add("active")
   })
  }
 
+ const changeFilterState = (event) => {
+    const  selectedCategory = event.target.dataset.category
+    btnActive(selectedCategory)
+    changeShowMore(selectedCategory)
+ }
+
+ const applyFilter = (event) => {
+     if (!event.target.classList.contains("category")){
+        return
+     } else {
+        changeFilterState(event)
+     }
+     if (!event.target.dataset.category){
+        products.innerHTML = "";
+        renderProducts();
+     } else {
+        renderProducts(0, event.target.dataset.category)
+        productsController.nextProductIndex = 1
+     }
+ }
+
+const isLastIndexOf = () =>{
+    return (
+        productsController.nextProductIndex === productsController.productsLimit
+    )
+}
+
 const init = () => {
     renderProducts();
+    categories.addEventListener("click",applyFilter);
 };
 init()
