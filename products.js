@@ -115,7 +115,7 @@ const productsList = [
 const splitProducts = (size) => {
     let dividedProducts = [];
 
-    for (let i = 0; i<productsList.length; i+= size){
+    for (let i = 0; i < productsList.length; i += size) {
         dividedProducts.push(productsList.slice(i, i + size))
     }
     return dividedProducts;

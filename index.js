@@ -24,17 +24,19 @@ const renderProduct = (product) => {
 } 
 // Renderizado por páginas
 const renderDividedProducts = (index = 0) => {
-    products.innerHTML += productsController.dividedProducts[index].map(renderProduct).join("")
-}
-
+	products.innerHTML += productsController.dividedProducts[index]
+		.map(renderProduct)
+		.join("");
+};
+// Renderizado por filtros
 const renderFilteredProducts = (category) => {
     const productsFilter = productsList.filter((product) => {
         return product.category === category;
     });
     products.innerHTML = productsFilter.map(renderProduct).join("");
-}
+};
 
-const renderProducts = (index = 0, category) => {
+const renderProducts = (index = 0, category = undefined) => {
      if (!category){renderDividedProducts(index);
      return
 }
@@ -42,7 +44,7 @@ renderFilteredProducts(category);
 }
 
 const changeShowMore = (category) => {
-   if (!category){
+   if (!category) {
       moreBtn.classList.remove("hidden");
       return; 
     }
@@ -51,12 +53,12 @@ const changeShowMore = (category) => {
 
  const btnActive = (selectedCategory) => {
      const categories = [...categoriesList]
-     categories.forEach( (categoryBtn) => {
+     categories.forEach((categoryBtn) => {
       if (categoryBtn.dataset.category !== selectedCategory){
         categoryBtn.classList.remove("active");
         return;
       }
-      categoryBtn.classList.add("active")
+      categoryBtn.classList.add("active");
   })
  }
 
@@ -87,8 +89,17 @@ const isLastIndexOf = () =>{
     )
 }
 
+const showMore = () => {
+    renderProducts(productsController.nextProductsIndex)
+    productsController.nextProductIndex++
+    if (isLastIndexOf()){
+        moreBtn.classList.add("hidden")
+    }
+}
+
 const init = () => {
     renderProducts();
-    categories.addEventListener("click",applyFilter);
+    categories.addEventListener("click", applyFilter);
+    moreBtn.addEventListener ("click", showMore)
 };
 init()
