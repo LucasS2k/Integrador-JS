@@ -74,8 +74,41 @@ header{
 .header_list_link a:hover{
     color: var(--amarillo);
 }
+.imgContainer{
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+    align-items: center;
+}
 .menuimg{
     height: 40px;
+}
+.menuimg:hover{
+    cursor: pointer;
+}
+.cartImg{
+    height: 40px;
+    justify-self: right;
+}
+.cartImg:hover{
+    cursor: pointer;
+}
+.cartContainer{
+    position: absolute;
+    top: 80px;
+    background-color: var(--blanco);
+    right: 0;
+    z-index: 2;
+    display: none;
+    font-weight: 700;
+    padding: 1rem;
+    gap: 20px;
+    font-size: 1rem;
+    width: 150px;
+    box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
+-webkit-box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
+-moz-box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
+
 }
 .menu{
     position: absolute;
@@ -99,16 +132,6 @@ header{
 .menu a:hover{
     color: var(--amarillo);
     
-}
-#menu-toggle{
-    display: none;
-}
-#menu-toggle:checked+.menu{
-    display: flex;
-    justify-content: center;
-}
-.menu-label{
-    display: none;
 }
 .hero{
     display: flex;
@@ -418,6 +441,9 @@ footer a:hover{
 }
 .hidden{
     display: none;
+}
+.display{
+    display: flex;
 }
 .categories{
     display: flex;
