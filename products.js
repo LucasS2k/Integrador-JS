@@ -120,7 +120,6 @@ const splitProducts = (size) => {
     }
     return dividedProducts;
 }
-
 const productsController = {
     dividedProducts: splitProducts(5),
     nextProductsIndex: 1,

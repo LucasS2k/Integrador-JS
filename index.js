@@ -83,13 +83,13 @@ const changeShowMore = (category) => {
         renderProducts();
      } else {
         renderProducts(0, event.target.dataset.category)
-        productsController.nextProductIndex = 1
+        productsController.nextProductsIndex = 1
      }
  }
 
 const isLastIndexOf = () =>{
     return (
-        productsController.nextProductIndex === productsController.productsLimit
+        productsController.nextProductsIndex === productsController.productsLimit
     )
 }
 
