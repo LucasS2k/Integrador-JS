@@ -13,10 +13,6 @@ const saveLocalStorage = (cartList) =>{
 const cartBtn = document.querySelector(".cartImg")
 // contenedor del carrito
 const cartCont = document.querySelector(".cartContainer")
-// Botón de menu
-const menuBtn = document.querySelector(".menuimg")
-// Container del menu
-const menu = document.querySelector(".menu")
 // Boton de mostrar más
 const moreBtn = document.querySelector(".showMoreButton");
 // Renderizado
@@ -104,11 +100,6 @@ const showMore = () => {
         moreBtn.classList.add("hidden")
     }
 }
-
-const displayMenu = () => {
-     menu.classList.toggle("display")
-}
-
 const displayCart = () => {
     cartCont.classList.toggle("display")
 }
@@ -117,7 +108,6 @@ const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
     moreBtn.addEventListener ("click", showMore)
-    menuBtn.addEventListener("click", displayMenu)
     cartBtn.addEventListener("click", displayCart)
 };
 init()
