@@ -95,7 +95,7 @@ const isLastIndexOf = () =>{
 
 const showMore = () => {
     renderProducts(productsController.nextProductsIndex)
-    productsController.nextProductIndex++
+    productsController.nextProductsIndex++
     if (isLastIndexOf()){
         moreBtn.classList.add("hidden")
     }
