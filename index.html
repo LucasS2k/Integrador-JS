@@ -22,7 +22,7 @@
             </ul>
         </nav>
         <div class="imgContainer">
-          <img src="./integrador/Assets/shopping-cart.png" alt="carrito de compras" class="cartImg">
+          <img src="./integrador/Assets/shopping-cart.png" alt="carrito de compras" class="cartImg" id="boton-carrito">
           <img src="./integrador/Assets/menu.png" alt="menu" class="menuimg">
         </div>
         <div class="cartContainer">
@@ -96,6 +96,16 @@
             </div>
         </form>
     </main>
+    <div class="modal-contenedor">
+      <div class="modal-carrito">
+          <h3>Carrito</h3>
+          <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
+          <div id="carrito-contenedor">
+          </div>
+          <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+          <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
+      </div>
+  </div>
     <footer id="contacto">
       <div>
       <ul class="footerlist">
@@ -114,7 +124,8 @@
     </div>
      </footer>
      <script src="./products.js"></script>
-     <script src="./index.js"></script>
+     <script src="./cartmodals.js"></script>
      <script src="./utility.js"></script>
+     <script src="./index.js"></script>
 </body>
 </html>
