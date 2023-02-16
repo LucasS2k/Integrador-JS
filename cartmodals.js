@@ -1,5 +1,5 @@
 const contenedorModal = document.getElementsByClassName('modal-contenedor')[0]
-const botonAbrir = document.getElementById('boton-carrito')
+// const botonAbrir = document.getElementById('boton-carrito')
 const botonCerrar = document.getElementById('carritoCerrar')
 const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
 //vaciar carrito
@@ -10,10 +10,9 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const saveLocalStorage = (cartList) =>{
     localStorage.setItem("cart", JSON.stringify(cartList));
 };
-// boton de carrito
-const cartBtn = document.querySelector(".cartImg")
+
 // contenedor del carrito
-const contenedorCarrito = document.querySelector(".cartContainer")
+const cartCont = document.querySelector(".cartContainer")
 
 //contador carrito
 const contadorCarrito = document.getElementById('contadorCarrito')
@@ -23,20 +22,29 @@ const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
 
-botonAbrir.addEventListener('click',()=>{
-    contenedorModal.classList.toggle('modal-active')
-})
-botonCerrar.addEventListener('click',()=>{
-    contenedorModal.classList.toggle('modal-active')
-})
-contenedorModal.addEventListener('click',() =>{
-    contenedorModal.classList.toggle('modal-active')
-})
-modalCarrito.addEventListener('click', (event) => {
-    event.stopPropagation()
-})
+// botonAbrir.addEventListener('click',()=>{
+//     contenedorModal.classList.toggle('modal-active')
+// })
+// botonCerrar.addEventListener('click',()=>{
+//     contenedorModal.classList.toggle('modal-active')
+// })
+// contenedorModal.addEventListener('click',() =>{
+//     contenedorModal.classList.toggle('modal-active')
+// })
+// modalCarrito.addEventListener('click', (event) => {
+//     event.stopPropagation()
+// })
 
 //local storage del carrito
+
+
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito()
+})
+
+const botonAgregar = document.getElementById(`agregar${products.id}`)
+
 let carrito = []
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,23 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarCarrito()
     }
 })
-
-botonVaciar.addEventListener('click', () => {
-    carrito.length = 0
-    actualizarCarrito()
-})
-
-const addButton = document.getElementsByClassName(`boton-agregar${productsList.id}`)
+    console.log(carrito)
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
 
 
-addButton.addEventListener('click', () => {
-    agregarAlCarrito(producto.id)
-})
-
-const agregarAlCarrito = (prodId) => {
-
-    
-    const exist = carrito.some (prod => prod.id === prodId)
+const agregarAlCarrito = (prodId) => {   
+    const exist = carrito.some (prod => products.id === prodId)
 
     if (exist){
         const prod = carrito.map (prod => {
@@ -75,6 +72,38 @@ const agregarAlCarrito = (prodId) => {
     }
     actualizarCarrito()
 }
+
+const addProduct = (e) => {
+	if (!e.target.classList.contains("boton-agregar")) {
+		return;
+	}
+	const { id, name, bid, img } = e.target.dataset;
+
+	const product = productData(id, name, bid, img);
+
+	if (isExistingCartProduct(product)) {
+		addUnitToProduct(product);
+		showSuccessModal("Se agregó una unidad del producto al carrito");
+	} else {
+		agregarAlCarrito(product);
+	}
+};
+const isExistingCartProduct = (product) => {
+	return cart.find((item) => {
+		return item.id === product.id;
+	});
+};
+const productData = (id, name, bid, img) => {
+	return { id, name, bid, img };
+};
+
+
+
+botonAgregar.addEventListener('click', () => {
+    agregarAlCarrito(productsList.id)
+})
+
+
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((prod) => prod.id === prodId)
 
@@ -87,18 +116,18 @@ const eliminarDelCarrito = (prodId) => {
 
 const actualizarCarrito = () => {
 
-    contenedorCarrito.innerHTML = ""
+    cartCont.innerHTML = ""
     carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
         div.innerHTML = `
-        <p>${prod.nombre}</p>
-        <p>Precio:$${prod.precio}</p>
-        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
-        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        <p>${products.producName}</p>
+        <p>Precio:$${products.value}</p>
+        <p>Cantidad: <span id="cantidad">${products.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${products.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
         `
 
-        contenedorCarrito.appendChild(div)
+        cartCont.appendChild(div)
         
         localStorage.setItem('carrito', JSON.stringify(carrito))
 
@@ -106,6 +135,4 @@ const actualizarCarrito = () => {
     
     contadorCarrito.innerText = carrito.length
   
-    console.log(carrito)
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
 }

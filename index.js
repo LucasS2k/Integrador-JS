@@ -26,7 +26,7 @@ const renderDividedProducts = (index = 0) => {
 };
 // Renderizado por filtros
 const renderFilteredProducts = (category) => {
-    const productsFilter = productsList.filter((product) => {
+    const productsFilter = products.filter((product) => {
         return product.category === category;
     });
     products.innerHTML = productsFilter.map(renderProduct).join("");
@@ -92,14 +92,12 @@ const showMore = () => {
         moreBtn.classList.add("hidden")
     }
 }
-const displayCart = () => {
-    cartCont.classList.toggle("display")
-}
+
 
 const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
     moreBtn.addEventListener ("click", showMore)
-    cartBtn.addEventListener("click", displayCart)
+   
 };
 init()

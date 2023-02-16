@@ -8,3 +8,13 @@ const displayMenu = () => {
 }
 // Evento del boton de display menu
 menuBtn.addEventListener("click", displayMenu)
+
+
+// boton de carrito
+const cartBtn = document.getElementById("boton-carrito")
+
+const displayCart = () => {
+    cartCont.classList.toggle("display")
+}
+
+cartBtn.addEventListener("click", displayCart)
