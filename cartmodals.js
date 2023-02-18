@@ -38,14 +38,11 @@ const cantidadTotal = document.getElementById('cantidadTotal')
 //local storage del carrito
 
 
-botonVaciar.addEventListener('click', () => {
-    carrito.length = 0
-    actualizarCarrito()
-})
+
 
 const botonAgregar = document.getElementById(`agregar${products.id}`)
 
-let carrito = []
+let carrito = [""]
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')){
@@ -54,15 +51,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
     console.log(carrito)
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.value, 0)
 
 
 const agregarAlCarrito = (prodId) => {   
-    const exist = carrito.some (prod => products.id === prodId)
+    const exist = carrito.some (prod => prod.id === prodId)
 
     if (exist){
-        const prod = carrito.map (prod => {
-            if (prod.id === prodId){
+        const item = carrito.map (prod => {
+            if (prod.id === item){
                 prod.cantidad++
             }
         })
@@ -72,30 +69,50 @@ const agregarAlCarrito = (prodId) => {
     }
     actualizarCarrito()
 }
+const actualizarCarrito = () => {
 
-const addProduct = (e) => {
-	if (!e.target.classList.contains("boton-agregar")) {
-		return;
-	}
-	const { id, name, bid, img } = e.target.dataset;
+    cartCont.innerHTML = ""
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>vaciar-c${prod.value}</p>
+        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        `
 
-	const product = productData(id, name, bid, img);
+        cartCont.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
 
-	if (isExistingCartProduct(product)) {
-		addUnitToProduct(product);
-		showSuccessModal("Se agregó una unidad del producto al carrito");
-	} else {
-		agregarAlCarrito(product);
-	}
-};
-const isExistingCartProduct = (product) => {
-	return cart.find((item) => {
-		return item.id === product.id;
-	});
-};
-const productData = (id, name, bid, img) => {
-	return { id, name, bid, img };
-};
+    })
+    
+    contadorCarrito.innerText = carrito.length
+  
+}
+// const addProduct = (e) => {
+// 	if (!e.target.classList.contains("boton-agregar")) {
+//  		return;
+// 	}
+// 	const { id, name, bid, img } = e.target.dataset;
+
+// 	const product = productData(id, name, bid, img);
+
+//  	if (isExistingCartProduct(product)) {
+//  		addUnitToProduct(product);
+//  		showSuccessModal("Se agregó una unidad del producto al carrito");
+//  	} else {
+//  		agregarAlCarrito(product);
+//  	}
+//  };
+//  const isExistingCartProduct = (product) => {
+//  	return cart.find((item) => {
+//  		return item.id === product.id;
+// 	});
+//  };
+//  const productData = (id, name, bid, img) => {
+//  	return { id, name, bid, img }; };
 
 
 
@@ -114,25 +131,3 @@ const eliminarDelCarrito = (prodId) => {
     console.log(carrito)
 }
 
-const actualizarCarrito = () => {
-
-    cartCont.innerHTML = ""
-    carrito.forEach((prod) => {
-        const div = document.createElement('div')
-        div.className = ('productoEnCarrito')
-        div.innerHTML = `
-        <p>${products.producName}</p>
-        <p>Precio:$${products.value}</p>
-        <p>Cantidad: <span id="cantidad">${products.cantidad}</span></p>
-        <button onclick="eliminarDelCarrito(${products.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-        `
-
-        cartCont.appendChild(div)
-        
-        localStorage.setItem('carrito', JSON.stringify(carrito))
-
-    })
-    
-    contadorCarrito.innerText = carrito.length
-  
-}
