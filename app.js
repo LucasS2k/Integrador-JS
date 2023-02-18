@@ -9,12 +9,12 @@ const categoriesList = document.querySelectorAll(".category")
 const moreBtn = document.querySelector(".showMoreButton");
 // Renderizado
 const renderProduct = (product) => {
-    const {id, productName, value, productImg, category} = product
+    const {id, nombre, precio, productImg, category} = product
    return   `
    <div class="item">
-              <img src="${productImg}" alt="${productName}">
-              <div class="itemdescription"><p>${productName}</p></div>
-              <div class="itemfoot"><span class="valor">${value}</span><button id="agregar${products.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart" data-id= ${id} data-name=${productName}data-category=${category} data-value=${value} data-img=${productImg}></i></button></div>
+              <img src="${productImg}" alt="${nombre}">
+              <div class="itemdescription"><p>${nombre}</p></div>
+              <div class="itemfoot"><span class="valor">${precio}</span><button id="agregar${products.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart" data-id= ${id} data-name=${nombre}data-category=${category} data-value=${precio} data-img=${productImg}></i></button></div>
             </div>
             `
 } 
