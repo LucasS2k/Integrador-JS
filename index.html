@@ -25,9 +25,7 @@
           <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button>
           <img src="./integrador/Assets/menu.png" alt="menu" class="menuimg">
         </div>
-        <div class="cartContainer" id="carrito-contenedor">
-          <p>Su carrito está vacío</p>
-        </div>
+        
       <div class="menu">
           <ul> 
             <li><a href="./index.html">Inicio</a></li>
@@ -100,7 +98,10 @@
       <div class="modal-carrito">
           <h3>Carrito</h3>
           <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
-          <div id="cartContainer">
+          <div id="cartContainer" class="carrito-contenedor">
+            
+              <p>Su carrito está vacío</p>
+            
           </div>
           <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
           <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>

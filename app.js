@@ -7,7 +7,7 @@ const categoriesList = document.querySelectorAll(".category")
 const moreBtn = document.querySelector(".showMoreButton");
 
 // Contenedor del carrito
-const contenedorCarrito = document.getElementById('carrito-contenedor')
+const contenedorCarrito = document.getElementById('cartContainer')
 // Boton de vaciar carrito
 const botonVaciar = document.getElementById('vaciar-carrito')
 // Contador del carrito
@@ -16,6 +16,12 @@ const contadorCarrito = document.getElementById('contadorCarrito')
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
+// Guardado del carrito
+let carrito = JSON.parse(localStorage.getItem("cart")) || [];
+
+const saveLocalStorage = (CartList) => {
+    localStorage.setItem("cart", JSON.stringify(CartList))
+}
 // Renderizado
 const renderProduct = (product) => {
     const {id, nombre, precio, productImg, category} = product
@@ -23,10 +29,13 @@ const renderProduct = (product) => {
    <div class="item">
               <img src="${productImg}" alt="${nombre}">
               <div class="itemdescription"><p>${nombre}</p></div>
-              <div class="itemfoot"><span class="valor">${precio}</span><button id="agregar${products.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart" data-id= ${id} data-name=${nombre}data-category=${category} data-value=${precio} data-img=${productImg}></i></button></div>
+              <div class="itemfoot"><span class="valor">${precio}</span><button > + <i id="agregar${products.id}" class="boton-agregar fas fa-shopping-cart" data-id= ${id} data-name=${nombre}data-category=${category} data-value=${precio} data-img=${productImg}></i></button></div>
             </div>
             `
 }
+// boton de agregar al carrito
+const addButton = document.getElementById('agregar${products.id}')
+
 // Renderizado por páginas
 const renderDividedProducts = (index = 0) => {
 	products.innerHTML += productsController.dividedProducts[index]
@@ -102,10 +111,95 @@ const showMore = () => {
     }
 }
 
+const renderCartProduct = (cartProduct) => {
+    const {id, nombre, cantidad, precio} = cartProduct;
+    return `<div class="productoEnCarrito">
+    ${id}
+    // <img src=>
+    <h3>${nombre}</h3>
+    <p>${precio}</p>
+    ${cantidad}
+    
+    </div>`;
+};
 
+const renderCart = () => {
+    if (!carrito.length){
+        contenedorCarrito.innerHTML= `<p>Su carrito está vacío</p>`
+        return
+    }
+    contenedorCarrito.innerHTML = carrito.map(renderCartProduct).join("");
+};
+
+const total = () =>{
+    return carrito.reduce((acc, cur)=>{
+        return acc + Number(cur.precio) * cur.cantidad
+    }, 0)
+}
+const totalFunction = () => {
+    precioTotal.innerHTML = `$${total().toFixed(0)}`
+}
+const cartCount = () => {
+    contadorCarrito.textContent = carrito.reduce((acc, cur)=>{
+        return acc + cur.cantidad
+    }, 0)
+}
+const cartUpdate = () => {
+    saveLocalStorage(carrito)
+    renderCart()
+    total()
+    cartCount()
+}
+
+const agregarAlCarrito = (e) => {
+     if (!e.target.classList.contains("boton-agregar")){
+        return;
+     }
+     const {id, nombre, precio, img} = e.target.dataset;
+
+     const product = productData (id, nombre, precio, img);
+
+     if (alreadyInCart(product)){
+        agregarCantidadAlCart(product);
+     } else {
+       renderizarEnCarrito(product);
+     }
+     cartUpdate();
+}
+
+const productData = (id, nombre, precio, img) => {
+    return {id, nombre, precio, img}
+}
+
+const alreadyInCart = (product) => {
+   return carrito.find((item)=> {
+       return item.id === product.id
+   })      
+}
+
+const agregarCantidadAlCart = (product) => {
+    carrito = carrito.map ( (cartProduct)=>{
+       return cartProduct.id === product.id 
+       ? {...cartProduct, quantity: cartProduct.quantity +1}
+       :cartProduct;
+    })
+}
+const renderizarEnCarrito = (product) => {
+    carrito = [
+        ...carrito,
+        {
+            ...product,
+            quantity: 1,
+        },
+    ]
+}
 const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
     moreBtn.addEventListener ("click", showMore)
+    document.addEventListener("DOMContentLoaded", renderCart)
+    document.addEventListener("DOMContentLoaded", total)
+    document.addEventListener("DOMContentLoaded",cartCount());
+    products.addEventListener("click", agregarAlCarrito)
 };
 init()
