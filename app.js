@@ -3,10 +3,19 @@ const products = document.querySelector(".productContainer");
 // Botones de categorias
 const categories = document.querySelector(".categories")
 const categoriesList = document.querySelectorAll(".category")
-
-
 // Boton de mostrar más
 const moreBtn = document.querySelector(".showMoreButton");
+
+// Contenedor del carrito
+const contenedorCarrito = document.getElementById('carrito-contenedor')
+// Boton de vaciar carrito
+const botonVaciar = document.getElementById('vaciar-carrito')
+// Contador del carrito
+const contadorCarrito = document.getElementById('contadorCarrito')
+// Valores del carrito
+const cantidad = document.getElementById('cantidad')
+const precioTotal = document.getElementById('precioTotal')
+const cantidadTotal = document.getElementById('cantidadTotal')
 // Renderizado
 const renderProduct = (product) => {
     const {id, nombre, precio, productImg, category} = product
@@ -17,7 +26,7 @@ const renderProduct = (product) => {
               <div class="itemfoot"><span class="valor">${precio}</span><button id="agregar${products.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart" data-id= ${id} data-name=${nombre}data-category=${category} data-value=${precio} data-img=${productImg}></i></button></div>
             </div>
             `
-} 
+}
 // Renderizado por páginas
 const renderDividedProducts = (index = 0) => {
 	products.innerHTML += productsController.dividedProducts[index]
@@ -26,7 +35,7 @@ const renderDividedProducts = (index = 0) => {
 };
 // Renderizado por filtros
 const renderFilteredProducts = (category) => {
-    const productsFilter = products.filter((product) => {
+    const productsFilter = stockProductos.filter((product) => {
         return product.category === category;
     });
     products.innerHTML = productsFilter.map(renderProduct).join("");
@@ -98,6 +107,5 @@ const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
     moreBtn.addEventListener ("click", showMore)
-   
 };
 init()

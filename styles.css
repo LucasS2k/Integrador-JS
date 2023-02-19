@@ -192,6 +192,9 @@ header{
 .boton-eliminar:focus {
     outline: none;
 }
+.modal-active{
+    display: flex;
+}
 .menu{
     position: absolute;
     top: 80px;
