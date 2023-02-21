@@ -29,7 +29,7 @@ let stockProductos = [
         id:4,
         nombre: "Jogger Negro",
         precio:"$3000",
-        productImg:"./Integrador-JS/integrador/Assets/pants2.jpg",
+        productImg:"./integrador/Assets/pants2.jpg",
         category:"prendas",
         cantidad: 1,
     },
