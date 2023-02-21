@@ -112,9 +112,8 @@ const showMore = () => {
 }
 
 const renderInCart = (cartProduct) => {
-    const {id, name, value, productImg } = cartProduct;
-    return `<div class="productoEnCarrito">
-    ${id} ${name} ${value} <img src="${productImg}">    </div>`;
+    const {quantity, name, value, img } = cartProduct;
+    return `<div class="productoEnCarrito">${quantity} ${name} ${value} <img src="${img}" class="imageInCart">    </div>`;
 };
 
 const renderCart = () => {
@@ -127,15 +126,15 @@ const renderCart = () => {
 
 const total = () =>{
     return carrito.reduce((acc, cur)=>{
-        return acc + Number(cur.precio) * cur.cantidad
+        return acc + Number(cur.value) * cur.quantity;
     }, 0)
 }
 const totalFunction = () => {
-    precioTotal.innerHTML = `${total()}`
+    precioTotal.innerHTML = `${total()}`;
 }
 const cartCount = () => {
     contadorCarrito.textContent = carrito.reduce((acc, cur)=>{
-        return acc + cur.cantidad
+        return acc + cur.quantity
     }, 0)
 }
 const cartUpdate = () => {
@@ -157,9 +156,9 @@ const agregarAlCarrito = (e) => {
      if (!e.target.classList.contains("boton-agregar")){
         return;
      }
-     const {id, name, value, img} = e.target.dataset;
+     const { id, name, value, img} = e.target.dataset;
 
-     const product = productData (id, name, value, img);
+     const product = productData ( id, name, value, img);
 
      if (alreadyInCart(product)){
         agregarCantidadAlCart(product);
@@ -169,8 +168,8 @@ const agregarAlCarrito = (e) => {
      cartUpdate();
 }
 
-const productData = (id, name, value, img) => {
-    return {id, name, value, img};
+const productData = ( id, name, value, img) => {
+    return { id, name, value, img};
 };
 
 const alreadyInCart = (product) => {
