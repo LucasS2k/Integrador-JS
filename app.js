@@ -24,17 +24,17 @@ const saveLocalStorage = (CartList) => {
 }
 // Renderizado
 const renderProduct = (product) => {
-    const {id, nombre, precio, productImg, category} = product
+    const {id, nombre, precio, productImg, category, cantidad} = product
    return   `
    <div class="item">
               <img src="${productImg}" alt="${nombre}">
               <div class="itemdescription"><p>${nombre}</p></div>
-              <div class="itemfoot"><span class="valor">${precio}</span><button > + <i id="agregar${products.id}" class="boton-agregar fas fa-shopping-cart" data-id= ${id} data-name=${nombre}data-category=${category} data-value=${precio} data-img=${productImg}></i></button></div>
+              <div class="itemfoot"><span class="valor">${precio}</span><button class="boton-agregar fas fa-shopping-cart" data-id="${id}" data-name="${nombre}" data-category="${category}" data-value="${precio}" data-img="${productImg}" data-quantity="${cantidad}"> +</button></div>
             </div>
             `
 }
 // boton de agregar al carrito
-const addButton = document.getElementById('agregar${products.id}')
+// const addButton = document.getElementById('agregar${products.id}')
 
 // Renderizado por páginas
 const renderDividedProducts = (index = 0) => {
@@ -112,14 +112,13 @@ const showMore = () => {
 }
 
 const renderInCart = (cartProduct) => {
-    const { id,productImg, nombre, cantidad, precio } = cartProduct;
+    const {id, name, value, productImg } = cartProduct;
     return `<div class="productoEnCarrito">
-    ${id} ${productImg}${nombre}${precio}${cantidad}
-    </div>`;
+    ${id} ${name} ${value} <img src="${productImg}">    </div>`;
 };
 
 const renderCart = () => {
-    if (!carrito.length){
+    if (!carrito.length) {
         contenedorCarrito.innerHTML= `<p>Su carrito está vacío</p>`
         return
     }
@@ -132,7 +131,7 @@ const total = () =>{
     }, 0)
 }
 const totalFunction = () => {
-    precioTotal.innerHTML = `$${total()}`
+    precioTotal.innerHTML = `${total()}`
 }
 const cartCount = () => {
     contadorCarrito.textContent = carrito.reduce((acc, cur)=>{
@@ -158,9 +157,9 @@ const agregarAlCarrito = (e) => {
      if (!e.target.classList.contains("boton-agregar")){
         return;
      }
-     const {id, nombre, precio, productImg} = e.target.dataset;
+     const {id, name, value, img} = e.target.dataset;
 
-     const product = productData (id, nombre, precio, productImg);
+     const product = productData (id, name, value, img);
 
      if (alreadyInCart(product)){
         agregarCantidadAlCart(product);
@@ -170,9 +169,9 @@ const agregarAlCarrito = (e) => {
      cartUpdate();
 }
 
-const productData = (id, nombre, precio, productImg) => {
-    return {id, nombre, precio, productImg}
-}
+const productData = (id, name, value, img) => {
+    return {id, name, value, img};
+};
 
 const alreadyInCart = (product) => {
    return carrito.find((item)=> {
