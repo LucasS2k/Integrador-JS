@@ -111,15 +111,10 @@ const showMore = () => {
     }
 }
 
-const renderCartProduct = (cartProduct) => {
-    const {id, nombre, cantidad, precio} = cartProduct;
+const renderInCart = (cartProduct) => {
+    const { id,productImg, nombre, cantidad, precio } = cartProduct;
     return `<div class="productoEnCarrito">
-    ${id}
-    // <img src=>
-    <h3>${nombre}</h3>
-    <p>${precio}</p>
-    ${cantidad}
-    
+    ${id} ${productImg}${nombre}${precio}${cantidad}
     </div>`;
 };
 
@@ -128,7 +123,7 @@ const renderCart = () => {
         contenedorCarrito.innerHTML= `<p>Su carrito está vacío</p>`
         return
     }
-    contenedorCarrito.innerHTML = carrito.map(renderCartProduct).join("");
+    contenedorCarrito.innerHTML = carrito.map(renderInCart).join("");
 };
 
 const total = () =>{
@@ -137,7 +132,7 @@ const total = () =>{
     }, 0)
 }
 const totalFunction = () => {
-    precioTotal.innerHTML = `$${total().toFixed(0)}`
+    precioTotal.innerHTML = `$${total()}`
 }
 const cartCount = () => {
     contadorCarrito.textContent = carrito.reduce((acc, cur)=>{
@@ -150,40 +145,6 @@ const cartUpdate = () => {
     total()
     cartCount()
 }
-
-const agregarAlCarrito = (e) => {
-     if (!e.target.classList.contains("boton-agregar")){
-        return;
-     }
-     const {id, nombre, precio, img} = e.target.dataset;
-
-     const product = productData (id, nombre, precio, img);
-
-     if (alreadyInCart(product)){
-        agregarCantidadAlCart(product);
-     } else {
-       renderizarEnCarrito(product);
-     }
-     cartUpdate();
-}
-
-const productData = (id, nombre, precio, img) => {
-    return {id, nombre, precio, img}
-}
-
-const alreadyInCart = (product) => {
-   return carrito.find((item)=> {
-       return item.id === product.id
-   })      
-}
-
-const agregarCantidadAlCart = (product) => {
-    carrito = carrito.map ( (cartProduct)=>{
-       return cartProduct.id === product.id 
-       ? {...cartProduct, quantity: cartProduct.quantity +1}
-       :cartProduct;
-    })
-}
 const renderizarEnCarrito = (product) => {
     carrito = [
         ...carrito,
@@ -193,6 +154,43 @@ const renderizarEnCarrito = (product) => {
         },
     ]
 }
+const agregarAlCarrito = (e) => {
+     if (!e.target.classList.contains("boton-agregar")){
+        return;
+     }
+     const {id, nombre, precio, productImg} = e.target.dataset;
+
+     const product = productData (id, nombre, precio, productImg);
+
+     if (alreadyInCart(product)){
+        agregarCantidadAlCart(product);
+     } else {
+       renderizarEnCarrito(product);
+     }
+     cartUpdate();
+}
+
+const productData = (id, nombre, precio, productImg) => {
+    return {id, nombre, precio, productImg}
+}
+
+const alreadyInCart = (product) => {
+   return carrito.find((item)=> {
+       return item.id === product.id
+   })      
+}
+
+const agregarCantidadAlCart = (product) => {
+    carrito = carrito.map ((cartProduct)=>{
+       return cartProduct.id === product.id 
+       ? {...cartProduct, quantity: cartProduct.quantity +1}
+       :cartProduct;
+    })
+}
+const vaciarCarrito = () => {
+    carrito = [];
+    cartUpdate()
+}
 const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
@@ -201,5 +199,6 @@ const init = () => {
     document.addEventListener("DOMContentLoaded", total)
     document.addEventListener("DOMContentLoaded",cartCount());
     products.addEventListener("click", agregarAlCarrito)
+    botonVaciar.addEventListener("click", vaciarCarrito)
 };
 init()
