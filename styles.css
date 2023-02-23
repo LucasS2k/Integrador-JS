@@ -79,6 +79,8 @@ header{
     gap: 1rem;
     margin-right: 1rem;
     align-items: center;
+    justify-content: center;
+    
 }
 .menuimg{
     height: 40px;
@@ -93,24 +95,7 @@ header{
 .cartImg:hover{
     cursor: pointer;
 }
-.cartContainer{
-    position: absolute;
-    top: 80px;
-    background-color: var(--blanco);
-    right: 0;
-    z-index: 2;
-    display: none;
-    font-weight: 700;
-    padding: 1rem;
-    gap: 20px;
-    font-size: 1rem;
-    width: 150px;
-    box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
--webkit-box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
--moz-box-shadow: 10px 9px 10px -6px rgba(0,0,0,0.99);
-
-}
-.modal-contenedor {
+.modalContenedor {
     position: fixed;
     z-index: 6;
     top: 0;
@@ -120,13 +105,12 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all .5s;
+    transition: all 0.5s;
     opacity: 0;
     visibility: hidden;
     
 }
-
-.modal-active {
+.modalActive {
     opacity: 1;
     visibility: visible;
 }
@@ -140,7 +124,7 @@ header{
     transition: all .5s;
 }
 
-.modal-active .modal-carrito {
+.modalActive .modal-carrito {
     margin-top: 0;
 }
 
@@ -167,36 +151,29 @@ header{
     padding-top: 10px;
     
 }
-
+.cartIcon{
+    color: var(--amarillo);
+    background-color: transparent;
+    height: 50px;
+    border: none;
+    font-size: larger;
+}
+.cartIcon:hover{
+    cursor: pointer;
+}
 .productoEnCarrito {
     border-left: 5px solid var(--gris);
-    border-bottom-left-radius: 3px;
-    border-top-left-radius: 3px;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
     margin: 5px 0;
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
 }
-.productoEnCarrito:hover {
-    border-left: 5px solid var(--amarillo);
-}
 .imageInCart{
     height: 50px;
 }
-.boton-eliminar {
-    background-color: white;
-    color: var(--amarillo);
-    border: none;
-    font-size: 20px;
-}
-
-.boton-eliminar:hover {
-    cursor: pointer;
-}
-.boton-eliminar:focus {
-    outline: none;
-}
-.modal-active{
+.modalActive{
     display: flex;
 }
 .menu{
@@ -401,12 +378,6 @@ input{
     justify-content: center;
     padding-bottom: 16px;
 }
-.addItems{
-    display: flex;
-    padding-left: auto;
-    padding-right: auto;
-    align-items: center;
-}
 .valor{
     display: flex;
     align-items: baseline;
@@ -442,8 +413,8 @@ input{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
-    background-color: var(--blanco);
+    gap: 10px;
+    background-color: trna;
     height: 60px;
     width: 150px;
     align-items: center;
@@ -451,22 +422,19 @@ input{
     transition: all 0.3s;
 }
 .benefitem a{
-    color: var(--negro);
+    color: var(--blanco);
     transition: all 0.3s;
 }
-.benefitem:hover{
-    background-color: var(--amarillo);
+.benefitem .benefitemImage:hover{
     cursor: pointer;
+    transform: translateY(10px);
 }
 .benefitem a:hover{
-    color: var(--negro);
+    cursor: pointer;
 }
 .benefitemImage{
    height: 70px;
    transition: all 0.3s;
-}
-.benefitemImage:hover{
-    transform: translateY(10px);
 }
 .subtitle{
     display: flex;

@@ -1,20 +1,19 @@
-const contenedorModal = document.getElementsByClassName('modal-contenedor')[0]
-const botonAbrir = document.getElementById('boton-carrito')
+const contenedorModal = document.getElementsByClassName('modalContenedor')[0]
+const botonAbrir = document.getElementById('botonCarrito')
 const botonCerrar = document.getElementById('carritoCerrar')
 const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
 
 botonAbrir.addEventListener('click', ()=>{
-    contenedorModal.classList.toggle('modal-active')
+    contenedorModal.classList.toggle('modalActive')
 })
 botonCerrar.addEventListener('click', ()=>{
-    contenedorModal.classList.toggle('modal-active')
+    contenedorModal.classList.toggle('modalActive')
 })
 
 contenedorModal.addEventListener('click', (event) =>{
-    contenedorModal.classList.toggle('modal-active')
+    contenedorModal.classList.toggle('modalActive')
 
 })
 modalCarrito.addEventListener('click', (event) => {
-    event.stopPropagation() //cuando clickeo sobre el modal se finaliza la propagacion del click a los elementos
-    //padre
+    event.stopPropagation()
 })

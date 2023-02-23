@@ -22,7 +22,7 @@
             </ul>
         </nav>
         <div class="imgContainer">
-          <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button>
+          <button id="botonCarrito" class="cartIcon"><i  class="fa-solid fa-cart-shopping"></i><span id="contadorCarrito">0</span></button>
           <img src="./integrador/Assets/menu.png" alt="menu" class="menuimg">
         </div>
         
@@ -56,7 +56,6 @@
               <button class="category" data-category="accesorios">Accesorios</button>
             </div>
            <div class="productContainer">
-           
            </div>
            <div class="divDeUtilidad">
            <button class="showMoreButton">Ver más</button>
@@ -66,16 +65,13 @@
           <section>
             <div class="beneficios">
             <div class="benefitem">
-              <div><a href="#"><span>Consultar envío</span></a></div>
-              <div><img src="./integrador/Assets/shipping.png" alt="" class="benefitemImage"></div> 
+              <img src="./integrador/Assets/shipping.png" alt="" class="benefitemImage"><a href="#"><span>Consultar envío</span></a>
             </div>
             <div class="benefitem">
-              <div><a href="#"><span>Ofertas</span></a></div>
-              <div><img src="./integrador/Assets/offer.png" alt="" class="benefitemImage"></div>
+              <img src="./integrador/Assets/offer.png" alt="" class="benefitemImage"><a href="#"><span>Ofertas</span></a>
             </div>
             <div class="benefitem">
-              <div><a href="#"><span>Medios de pago</span></a></div>
-              <div><img src="./integrador/Assets/creditcard.png" alt="" class="benefitemImage"></div>
+              <img src="./integrador/Assets/creditcard.png" alt="" class="benefitemImage"><a href="#"><span>Medios de pago</span></a>
             </div>
             </div>
           </section>
@@ -94,7 +90,7 @@
             </div>
         </form>
     </main>
-    <div class="modal-contenedor">
+    <div class="modalContenedor">
       <div class="modal-carrito">
           <h3>Carrito</h3>
           <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
@@ -104,7 +100,7 @@
             
           </div>
           <p class="precioProducto">Precio total:$<span id="precioTotal">0</span></p>
-          <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
+          <button id="vaciarCarrito" class="boton-agregar">Vaciar carrito</button>
       </div>
   </div>
     <footer id="contacto">

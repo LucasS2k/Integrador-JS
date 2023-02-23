@@ -9,7 +9,7 @@ const moreBtn = document.querySelector(".showMoreButton");
 // Contenedor del carrito
 const contenedorCarrito = document.getElementById('cartContainer')
 // Boton de vaciar carrito
-const botonVaciar = document.getElementById('vaciar-carrito')
+const botonVaciar = document.getElementById('vaciarCarrito')
 // Contador del carrito
 const contadorCarrito = document.getElementById('contadorCarrito')
 // Valores del carrito
@@ -112,8 +112,9 @@ const showMore = () => {
 }
 
 const renderInCart = (cartProduct) => {
-    const {quantity, name, value, img } = cartProduct;
-    return `<div class="productoEnCarrito">${quantity} ${name} ${value} <img src="${img}" class="imageInCart">    </div>`;
+    const {quantity, name, value, img, id } = cartProduct;
+    return `<div class="productoEnCarrito">${quantity} ${name} ${value} <img src="${img}" class="imageInCart"> <button id="deleteOne" data-id="${id}"> <i class="fa-solid fa-trash"></i></button></div>
+    <div class="lineagris"></div>`;
 };
 
 const renderCart = () => {
@@ -189,6 +190,8 @@ const vaciarCarrito = () => {
     carrito = [];
     cartUpdate()
 }
+// Boton de borrar unidad del carrito
+const deleteOne = document.getElementById('deleteOne')
 const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
@@ -198,5 +201,6 @@ const init = () => {
     document.addEventListener("DOMContentLoaded",cartCount());
     products.addEventListener("click", agregarAlCarrito)
     botonVaciar.addEventListener("click", vaciarCarrito)
+
 };
 init()

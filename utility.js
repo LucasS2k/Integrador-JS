@@ -11,7 +11,7 @@ menuBtn.addEventListener("click", displayMenu)
 
 
 // boton de carrito
-const cartBtn = document.getElementById("boton-carrito")
+const cartBtn = document.getElementById("botonCarrito")
 
 
  const displayCart = () => {
