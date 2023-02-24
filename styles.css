@@ -576,6 +576,6 @@ footer a:hover{
         max-width: 576px;
     }
     .beneficios{
-        flex-wrap: wrap
+        flex-direction: column
     }
 };
