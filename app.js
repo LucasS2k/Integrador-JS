@@ -215,6 +215,5 @@ const init = () => {
     products.addEventListener("click", agregarAlCarrito)
     botonVaciar.addEventListener("click", vaciarCarritoConfirm)
     botonFinalizarCompra.addEventListener("click", finalizarCompraConfirm)
-
 };
 init()
