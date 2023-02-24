@@ -577,6 +577,6 @@ footer a:hover{
     }
     .beneficios{
         flex-wrap: wrap;
-        justify-content: space-between
+        gap: 10px;
     }
 };
