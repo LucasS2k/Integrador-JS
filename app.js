@@ -10,6 +10,8 @@ const moreBtn = document.querySelector(".showMoreButton");
 const contenedorCarrito = document.getElementById('cartContainer')
 // Boton de vaciar carrito
 const botonVaciar = document.getElementById('vaciarCarrito')
+// Boton de finalizar compra
+const botonFinalizarCompra = document.getElementById('finalizarCompra')
 // Contador del carrito
 const contadorCarrito = document.getElementById('contadorCarrito')
 // Valores del carrito
@@ -29,13 +31,10 @@ const renderProduct = (product) => {
    <div class="item">
               <img src="${productImg}" alt="${nombre}">
               <div class="itemdescription"><p>${nombre}</p></div>
-              <div class="itemfoot"><span class="valor">${precio}</span><button class="boton-agregar fas fa-shopping-cart" data-id="${id}" data-name="${nombre}" data-category="${category}" data-value="${precio}" data-img="${productImg}" data-quantity="${cantidad}"> +</button></div>
+              <div class="itemfoot"><span class="valor">${precio}</span><button class="boton-agregar fas fa-shopping-cart" data-id="${id}" data-name="${nombre}" data-category="${category}" data-value="${precio}" data-img="${productImg}" data-quantity="${cantidad}">+</button></div>
             </div>
             `
 }
-// boton de agregar al carrito
-// const addButton = document.getElementById('agregar${products.id}')
-
 // Renderizado por páginas
 const renderDividedProducts = (index = 0) => {
 	products.innerHTML += productsController.dividedProducts[index]
@@ -127,7 +126,7 @@ const renderCart = () => {
 
 const total = () =>{
     return carrito.reduce((acc, cur)=>{
-        return acc + Number(cur.value) * cur.quantity;
+        return acc + Number(cur.precio) * cur.quantity;
     }, 0)
 }
 const totalFunction = () => {
@@ -190,6 +189,20 @@ const vaciarCarrito = () => {
     carrito = [];
     cartUpdate()
 }
+const cartWindow = (confirmMsg, successMsg) => {
+	if (!carrito.length) return;
+	if (window.confirm(confirmMsg)) {
+		vaciarCarrito();
+		alert(successMsg);
+	}
+};
+const finalizarCompraConfirm = () => {
+	cartWindow("¿Desea finalizar su compra?", "¡Su producto está en camino!");
+};
+
+const vaciarCarritoConfirm = () => {
+	cartWindow("¿Desea vaciar su carrito?", "Su carrito ha sido eliminado");
+};
 // Boton de borrar unidad del carrito
 const deleteOne = document.getElementById('deleteOne')
 const init = () => {
@@ -200,7 +213,8 @@ const init = () => {
     document.addEventListener("DOMContentLoaded", total)
     document.addEventListener("DOMContentLoaded",cartCount());
     products.addEventListener("click", agregarAlCarrito)
-    botonVaciar.addEventListener("click", vaciarCarrito)
+    botonVaciar.addEventListener("click", vaciarCarritoConfirm)
+    botonFinalizarCompra.addEventListener("click", finalizarCompraConfirm)
 
 };
 init()

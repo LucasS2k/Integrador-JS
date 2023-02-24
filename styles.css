@@ -402,6 +402,15 @@ input{
 .itemfoot a{
     color: var(--negro);
 }
+.itemfoot button{
+    transition: all 0.5s;
+}
+.itemfoot button:hover{
+    cursor: pointer;
+}
+.boton-agregar{
+    border: none;
+}
 .beneficios{
     display: flex;
     justify-content: center;
