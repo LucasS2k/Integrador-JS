@@ -567,6 +567,9 @@ footer a:hover{
     .header_nav{
         display: none;
     }
+    .modal-carrito{
+        width: 400px;
+    }
 }
 @media (max-width:576px){
     body{

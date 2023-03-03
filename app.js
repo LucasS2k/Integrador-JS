@@ -112,7 +112,7 @@ const showMore = () => {
 
 const renderInCart = (cartProduct) => {
     const {quantity, name, value, img, id } = cartProduct;
-    return `<div class="productoEnCarrito">${quantity} ${name} ${value} <img src="${img}" class="imageInCart"> <button id="deleteOne" data-id="${id}"> <i class="fa-solid fa-trash"></i></button></div>
+    return `<div class="productoEnCarrito">${quantity} ${name} ${value} <img src="${img}" class="imageInCart"> <button id="deleteOne" onclick="eliminarDelCarrito(${cartProduct.id})" data-id="${id}"> <i class="fa-solid fa-trash"></i></button></div>
     <div class="lineagris"></div>`;
 };
 
@@ -123,15 +123,6 @@ const renderCart = () => {
     }
     contenedorCarrito.innerHTML = carrito.map(renderInCart).join("");
 };
-
-const total = () =>{
-    return carrito.reduce((acc, cur)=>{
-        return acc + Number(cur.precio) * cur.quantity;
-    }, 0)
-}
-const totalFunction = () => {
-    precioTotal.innerHTML = `${total()}`;
-}
 const cartCount = () => {
     contadorCarrito.textContent = carrito.reduce((acc, cur)=>{
         return acc + cur.quantity
@@ -140,7 +131,6 @@ const cartCount = () => {
 const cartUpdate = () => {
     saveLocalStorage(carrito)
     renderCart()
-    total()
     cartCount()
 }
 const renderizarEnCarrito = (product) => {
@@ -205,15 +195,27 @@ const vaciarCarritoConfirm = () => {
 };
 // Boton de borrar unidad del carrito
 const deleteOne = document.getElementById('deleteOne')
+
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
+
+    const indice = carrito.indexOf(item)
+
+    carrito.splice(indice, 1) 
+    cartUpdate()
+    console.log(carrito)
+}
+precioTotal.innerText = carrito.reduce((acc, product)=> acc + product.cantidad * product.precio,0 )
 const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
     moreBtn.addEventListener ("click", showMore)
     document.addEventListener("DOMContentLoaded", renderCart)
-    document.addEventListener("DOMContentLoaded", total)
+    // document.addEventListener("DOMContentLoaded", total)
     document.addEventListener("DOMContentLoaded",cartCount());
     products.addEventListener("click", agregarAlCarrito)
     botonVaciar.addEventListener("click", vaciarCarritoConfirm)
     botonFinalizarCompra.addEventListener("click", finalizarCompraConfirm)
+    // deleteOne.addEventListener("click", eliminarDelCarrito)
 };
 init()

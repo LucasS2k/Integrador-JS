@@ -1,19 +1,29 @@
 const contenedorModal = document.getElementsByClassName('modalContenedor')[0]
+// Boton de abrir carrito
 const botonAbrir = document.getElementById('botonCarrito')
+// Boton de cerrar carrito
 const botonCerrar = document.getElementById('carritoCerrar')
 const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
-
+// Boton de agregar al carrito
+const addToCartButton = document.querySelector(".boton-agregar")
+// Cambiar icono al agregar al carrito
+addToCartButton.addEventListener('click', ()=>{
+    addToCartButton.classList.toggle('fa-check')
+})
+// Funcion para abrir carrito
 botonAbrir.addEventListener('click', ()=>{
     contenedorModal.classList.toggle('modalActive')
 })
+// Funcion para cerrar carrito
 botonCerrar.addEventListener('click', ()=>{
     contenedorModal.classList.toggle('modalActive')
 })
-
-contenedorModal.addEventListener('click', (event) =>{
+// Desplegar carrito
+contenedorModal.addEventListener('click', () =>{
     contenedorModal.classList.toggle('modalActive')
-
 })
+// Evitar que el evento afecte a otros elementos
 modalCarrito.addEventListener('click', (event) => {
     event.stopPropagation()
 })
+
