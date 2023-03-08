@@ -2,7 +2,7 @@ let stockProductos = [
     {
         id: 1,
         nombre: "Hoodie",
-        precio: "$6000",
+        precio: "6000",
         productImg: "./integrador/Assets/techhoodie.jpg",
         category: "prendas",
     },
@@ -10,7 +10,7 @@ let stockProductos = [
     {
         id: 2,
         nombre: "Eva 01 Hoodie",
-        precio: "$7000",
+        precio: "7000",
         productImg: "./integrador/Assets/eva.png",
         category: "prendas",
         cantidad: 1,
@@ -19,7 +19,7 @@ let stockProductos = [
     {
         id: 3,
         nombre: "Parca Mate",
-        precio: "$5500",
+        precio: "5500",
         productImg: "./integrador/Assets/techpark1.png",
         category: "prendas",
         cantidad: 1,
@@ -28,7 +28,7 @@ let stockProductos = [
     {
         id:4,
         nombre: "Jogger Negro",
-        precio:"$3000",
+        precio:"3000",
         productImg:"./integrador/Assets/pants2.jpg",
         category:"prendas",
         cantidad: 1,
@@ -37,7 +37,7 @@ let stockProductos = [
     {
         id:5,
         nombre: "Bolso 15cm",
-        precio:"$2200",
+        precio:"2200",
         productImg:"./integrador/Assets/bolsa.png",
         category:"accesorios",
         cantidad: 1,
@@ -46,7 +46,7 @@ let stockProductos = [
     {
         id:6,
         nombre: "Riñonera",
-        precio:"$3200",
+        precio:"3200",
         productImg:"./integrador/Assets/bolsa2.jpg",
         category:"accesorios",
         cantidad: 1,
@@ -55,7 +55,7 @@ let stockProductos = [
     {
         id:7,
         nombre: "Mochila",
-        precio:"$3000",
+        precio:"3000",
         productImg:"./integrador/Assets/bolsa3.png",
         category:"accesorios",
         cantidad: 1,
@@ -64,7 +64,7 @@ let stockProductos = [
     {
         id:8,
         nombre: "Riñonera V2",
-        precio:"$3500",
+        precio:"3500",
         productImg:"./integrador/Assets/bolsa5.png",
         category:"accesorios",
         cantidad: 1,
@@ -73,7 +73,7 @@ let stockProductos = [
     {
         id:9,
         nombre: "Guantes",
-        precio:"$1200",
+        precio:"1200",
         productImg:"./integrador/Assets/gloves.png",
         category:"accesorios",
         cantidad: 1,
@@ -82,7 +82,7 @@ let stockProductos = [
     {
         id:10,
         nombre: "Guantes P.",
-        precio:"$1900",
+        precio:"1900",
         productImg:"./integrador/Assets/gloves2.png",
         category:"accesorios",
         cantidad: 1,
@@ -91,7 +91,7 @@ let stockProductos = [
     {
         id:11,
         nombre: "Gorra Clásica",
-        precio:"$900",
+        precio:"900",
         productImg:"./integrador/Assets/hat1.jpg",
         category:"accesorios",
         cantidad: 1,
@@ -100,7 +100,7 @@ let stockProductos = [
     {
         id:12,
         nombre: "Gorra V2",
-        precio:"$1100",
+        precio:"1100",
         productImg:"./integrador/Assets/hat2.png",
         category:"accesorios",
         cantidad: 1,
@@ -109,7 +109,7 @@ let stockProductos = [
     {
         id:13,
         nombre: "Wallet clásica",
-        precio:"$900",
+        precio:"900",
         productImg:"./integrador/Assets/wallet.png",
         category:"accesorios",
         cantidad: 1,
@@ -118,7 +118,7 @@ let stockProductos = [
     {
         id:14,
         nombre: "Wallet",
-        precio:"$1100",
+        precio:"1100",
         productImg:"./integrador/Assets/wallet2.png",
         category:"accesorios",
         cantidad: 1,

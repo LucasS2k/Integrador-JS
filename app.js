@@ -5,7 +5,6 @@ const categories = document.querySelector(".categories")
 const categoriesList = document.querySelectorAll(".category")
 // Boton de mostrar más
 const moreBtn = document.querySelector(".showMoreButton");
-
 // Contenedor del carrito
 const contenedorCarrito = document.getElementById('cartContainer')
 // Boton de vaciar carrito
@@ -18,9 +17,9 @@ const contadorCarrito = document.getElementById('contadorCarrito')
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
-// Guardado del carrito
+// Recibir carrito guardado
 let carrito = JSON.parse(localStorage.getItem("cart")) || [];
-
+// Guardado del carrito
 const saveLocalStorage = (CartList) => {
     localStorage.setItem("cart", JSON.stringify(CartList))
 }
@@ -31,7 +30,7 @@ const renderProduct = (product) => {
    <div class="item">
               <img src="${productImg}" alt="${nombre}">
               <div class="itemdescription"><p>${nombre}</p></div>
-              <div class="itemfoot"><span class="valor">${precio}</span><button class="boton-agregar fas fa-shopping-cart" data-id="${id}" data-name="${nombre}" data-category="${category}" data-value="${precio}" data-img="${productImg}" data-quantity="${cantidad}">+</button></div>
+              <div class="itemfoot"><span class="valor">$${precio}</span><button class="boton-agregar fas fa-shopping-cart" data-id="${id}" data-name="${nombre}" data-category="${category}" data-value="${precio}" data-img="${productImg}" data-quantity="${cantidad}">+</button></div>
             </div>
             `
 }
@@ -132,6 +131,7 @@ const cartUpdate = () => {
     saveLocalStorage(carrito)
     renderCart()
     cartCount()
+    renderTotal()
 }
 const renderizarEnCarrito = (product) => {
     carrito = [
@@ -142,6 +142,7 @@ const renderizarEnCarrito = (product) => {
         },
     ]
 }
+const addToCartButton = document.getElementsByClassName('boton-agregar')
 const agregarAlCarrito = (e) => {
      if (!e.target.classList.contains("boton-agregar")){
         return;
@@ -205,13 +206,20 @@ const eliminarDelCarrito = (prodId) => {
     cartUpdate()
     console.log(carrito)
 }
-precioTotal.innerText = carrito.reduce((acc, product)=> acc + product.cantidad * product.precio,0 )
+const sumaTotal = () => {
+    return carrito.reduce((acc, cur)=>{
+        return acc + Number(cur.value) * cur.quantity;
+    },0);
+}
+const renderTotal = () => {
+    precioTotal.innerHTML = `${sumaTotal()}`;
+}
 const init = () => {
     renderProducts();
     categories.addEventListener("click", applyFilter);
     moreBtn.addEventListener ("click", showMore)
     document.addEventListener("DOMContentLoaded", renderCart)
-    // document.addEventListener("DOMContentLoaded", total)
+    document.addEventListener("DOMContentLoaded", renderTotal())
     document.addEventListener("DOMContentLoaded",cartCount());
     products.addEventListener("click", agregarAlCarrito)
     botonVaciar.addEventListener("click", vaciarCarritoConfirm)

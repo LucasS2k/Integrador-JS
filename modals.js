@@ -4,8 +4,6 @@ const botonAbrir = document.getElementById('botonCarrito')
 // Boton de cerrar carrito
 const botonCerrar = document.getElementById('carritoCerrar')
 const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
-// Boton de agregar al carrito
-const addToCartButton = document.querySelector(".boton-agregar")
 // Funcion para abrir carrito
 botonAbrir.addEventListener('click', ()=>{
     contenedorModal.classList.toggle('modalActive')
