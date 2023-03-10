@@ -111,7 +111,7 @@ const showMore = () => {
 
 const renderInCart = (cartProduct) => {
     const {quantity, name, value, img, id } = cartProduct;
-    return `<div class="productoEnCarrito">${quantity} ${name} $${value} <img src="${img}" class="imageInCart"> <button class="trashCan" id="deleteOne" onclick="eliminarDelCarrito(${cartProduct.id})" data-id="${id}"> <i class="trashCan fa-solid fa-trash"></i></button></div>
+    return `<div class="productoEnCarrito">${quantity} ${name} $${value} <img src="${img}" class="imageInCart"> <button class="trashCan deleteOne" onclick="eliminarDelCarrito(${cartProduct.id})" data-id="${id}"> <i class="trashCan fa-solid fa-trash"></i></button></div>
     <div class="lineagris"></div>`;
 };
 
@@ -195,16 +195,15 @@ const vaciarCarritoConfirm = () => {
 	cartWindow("¿Desea vaciar su carrito?", "Su carrito ha sido eliminado");
 };
 // Boton de borrar unidad del carrito
-const deleteOne = document.getElementById('deleteOne')
+// const deleteOne = document.getElementsByClassName('deleteOne')
 
 const eliminarDelCarrito = (prodId) => {
-    const item = carrito.find((prod) => prod.id === prodId)
+    const item = carrito.find((product) => product.id === prodId)
 
     const indice = carrito.indexOf(item)
 
     carrito.splice(indice, 1) 
     cartUpdate()
-    console.log(carrito)
 }
 const sumaTotal = () => {
     return carrito.reduce((acc, cur)=>{
