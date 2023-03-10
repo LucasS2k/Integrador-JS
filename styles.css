@@ -154,7 +154,6 @@ header{
     
 }
 .carrito-contenedor{
-    
     display: flex;
     flex-direction: column;
 }
@@ -417,6 +416,12 @@ input{
 .boton-agregar{
     border: none;
 }
+.trashCan{
+    border: none;
+}
+.trashCan:hover{
+    cursor: pointer;
+}
 .beneficios{
     display: flex;
     justify-content: center;
@@ -573,6 +578,11 @@ footer a:hover{
     .header_nav{
         display: none;
     }
+    .modal-carrito{
+        min-width: 350px;
+        gap: 5px;
+        padding: 1rem;
+     }
 }
 @media (max-width:576px){
     body{
@@ -590,9 +600,9 @@ footer a:hover{
         height: 40px;
      }
      .modal-carrito{
-        width: 300px;
-        gap: 5px;
-        padding: 5px;
+        min-width: 300px;
+        gap: 1rem;
+        padding: 1rem;
      }
      .carrito-contenedor{
         justify-content: center
