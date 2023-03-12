@@ -197,12 +197,13 @@ const vaciarCarritoConfirm = () => {
 // Boton de borrar unidad del carrito
 // const deleteOne = document.getElementsByClassName('deleteOne')
 
-const eliminarDelCarrito = (prodId) => {
-    const item = carrito.find((product) => product.id === prodId)
+const eliminarDelCarrito = (cartProduct) => {
+    const item = carrito.find((product) => product.id === cartProduct)
 
     const indice = carrito.indexOf(item)
 
-    carrito.splice(indice, 1) 
+     carrito.splice(indice) 
+    console.log(carrito)
     cartUpdate()
 }
 const sumaTotal = () => {
