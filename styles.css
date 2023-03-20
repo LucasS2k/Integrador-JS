@@ -31,7 +31,7 @@ main{
     margin: 0 auto;
     overflow: hidden;
     height: auto;
-    gap: 2rem;
+    gap: 1rem;
 }
 body{
     background-color: #242424;
@@ -159,6 +159,7 @@ header{
 }
 .modal-carrito .precioProducto {
     padding-top: 10px;
+    font-weight: 600;
     
 }
 .carrito-contenedor{
@@ -249,7 +250,6 @@ header{
     display: flex;
     justify-content: center;
     z-index: 2;
-    text-align: center;
 }
 .herolink{
     z-index: 2;
@@ -347,6 +347,7 @@ input{
     cursor: pointer;
 }
 .categories{
+    top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

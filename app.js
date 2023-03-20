@@ -111,7 +111,7 @@ const showMore = () => {
 
 const renderInCart = (cartProduct) => {
     const {quantity, name, value, img, id } = cartProduct;
-    return `<div class="productoEnCarrito">${quantity} ${name} $${value} <img src="${img}" class="imageInCart"> <button class="trashCan deleteOne" onclick="eliminarDelCarrito(${cartProduct.id})" data-id="${id}"> <i class="trashCan fa-solid fa-trash"></i></button></div>
+    return `<div class="productoEnCarrito precioProducto">${quantity} ${name} $${value} <img src="${img}" class="imageInCart"> <button class="trashCan deleteOne" onclick="eliminarDelCarrito(${cartProduct.id})" data-id="${id}"> <i class="trashCan fa-solid fa-trash"></i></button></div>
     <div class="lineagris"></div>`;
 };
 
