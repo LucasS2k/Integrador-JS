@@ -96,6 +96,13 @@ header{
 .cartImg:hover{
     cursor: pointer;
 }
+.fa {
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--blanco);
+    visibility: hidden;
+}
 .modalContenedor {
     z-index: 6;
     position: fixed;
@@ -582,6 +589,9 @@ footer a:hover{
         min-width: 350px;
         gap: 5px;
         padding: 1rem;
+     }
+     .fa{
+        visibility: visible;
      }
 }
 @media (max-width:576px){
