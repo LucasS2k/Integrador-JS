@@ -253,9 +253,8 @@ header{
 .herolink{
     z-index: 2;
     width: 80px;
-    right: 50%;
-    left: 50%;
-    top: 50%;
+    left: 0;
+    bottom: 0;
     position: absolute;
     padding: 0.5rem;
     background-color: var(--negro);
