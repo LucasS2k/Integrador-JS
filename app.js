@@ -13,6 +13,7 @@ const botonVaciar = document.getElementById('vaciarCarrito')
 const botonFinalizarCompra = document.getElementById('finalizarCompra')
 // Contador del carrito
 const contadorCarrito = document.getElementById('contadorCarrito')
+const contadorEnCarrito = document.getElementById('contadorCart')
 // Valores del carrito
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
@@ -127,11 +128,18 @@ const cartCount = () => {
         return acc + cur.quantity
     }, 0)
 }
+ const cartQuantity = () => {
+     contadorEnCarrito.textContent = carrito.reduce((acc, cur)=>{
+        return acc + cur.quantity
+     }, 0)
+
+ }
 const cartUpdate = () => {
     saveLocalStorage(carrito)
     renderCart()
     cartCount()
     renderTotal()
+    cartQuantity()
 }
 const renderizarEnCarrito = (product) => {
     carrito = [
@@ -203,7 +211,6 @@ const eliminarDelCarrito = (cartProduct) => {
     const indice = carrito.indexOf(item)
 
      carrito.splice(indice) 
-    console.log(carrito)
     cartUpdate()
 }
 const sumaTotal = () => {
@@ -220,7 +227,7 @@ const init = () => {
     moreBtn.addEventListener ("click", showMore)
     document.addEventListener("DOMContentLoaded", renderCart)
     document.addEventListener("DOMContentLoaded", renderTotal())
-    document.addEventListener("DOMContentLoaded",cartCount());
+    document.addEventListener("DOMContentLoaded",cartCount(), cartQuantity());
     products.addEventListener("click", agregarAlCarrito)
     botonVaciar.addEventListener("click", vaciarCarritoConfirm)
     botonFinalizarCompra.addEventListener("click", finalizarCompraConfirm)

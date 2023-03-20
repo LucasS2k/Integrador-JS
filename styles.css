@@ -103,6 +103,7 @@ header{
     cursor: pointer;
     color: var(--blanco);
     visibility: hidden;
+    transition: 0.6s;
 }
 .modalContenedor {
     z-index: 6;
