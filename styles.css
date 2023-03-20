@@ -31,6 +31,7 @@ main{
     margin: 0 auto;
     overflow: hidden;
     height: auto;
+    gap: 2rem;
 }
 body{
     background-color: #242424;
