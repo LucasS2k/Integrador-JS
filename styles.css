@@ -125,7 +125,9 @@ header{
     opacity: 1;
     visibility: visible;
 }
-
+.cartCheck{
+    display: none;
+}
 .modal-carrito {
     position: relative;
     background-color: var(--blanco);

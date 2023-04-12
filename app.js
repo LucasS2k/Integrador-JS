@@ -18,6 +18,7 @@ const contadorEnCarrito = document.getElementById('contadorCart')
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
+
 // Recibir carrito guardado
 let carrito = JSON.parse(localStorage.getItem("cart")) || [];
 // Guardado del carrito
@@ -112,7 +113,7 @@ const showMore = () => {
 
 const renderInCart = (cartProduct) => {
     const {quantity, name, value, img, id } = cartProduct;
-    return `<div class="productoEnCarrito precioProducto">${quantity} ${name} $${value} <img src="${img}" class="imageInCart"> <button class="trashCan deleteOne" onclick="eliminarDelCarrito(${cartProduct.id})" data-id="${id}"> <i class="trashCan fa-solid fa-trash"></i></button></div>
+    return `<div class="productoEnCarrito precioProducto">${quantity} ${name} $${value} <img src="${img}" class="imageInCart"> <button class="trashCan" data-name="${name}"> <i class="trashCan fa-solid fa-trash"></i></button></div>
     <div class="lineagris"></div>`;
 };
 
@@ -164,6 +165,13 @@ const agregarAlCarrito = (e) => {
      } else {
        renderizarEnCarrito(product);
      }
+    //  modal de exito
+    const cartCheck = document.getElementById('cartCheck')
+    cartCheck.style.display = 'flex'
+    setTimeout(()=> {
+        cartCheck.style.display = 'none'
+        
+    }, 1200) 
      cartUpdate();
 }
 
@@ -202,16 +210,20 @@ const finalizarCompraConfirm = () => {
 const vaciarCarritoConfirm = () => {
 	cartWindow("¿Desea vaciar su carrito?", "Su carrito ha sido eliminado");
 };
-// Boton de borrar unidad del carrito
-// const deleteOne = document.getElementsByClassName('deleteOne')
 
-const eliminarDelCarrito = (cartProduct) => {
-    const item = carrito.find((product) => product.id === cartProduct)
+ const eliminarDelCarrito = (name) => {
+     const item = carrito.find((product) => product.name === name)
+     const indice = carrito.indexOf(item)
+      carrito.splice(indice) 
+     cartUpdate()
+ }
 
-    const indice = carrito.indexOf(item)
 
-     carrito.splice(indice) 
-    cartUpdate()
+contenedorCarrito.onclick = function(e){
+   if(e.target && e.target.classList.contains('trashCan')){
+    const name = e.target.dataset.name 
+    eliminarDelCarrito(name)
+   }
 }
 const sumaTotal = () => {
     return carrito.reduce((acc, cur)=>{
