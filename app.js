@@ -211,18 +211,16 @@ const vaciarCarritoConfirm = () => {
 	cartWindow("¿Desea vaciar su carrito?", "Su carrito ha sido eliminado");
 };
 
- const eliminarDelCarrito = (name) => {
-     const item = carrito.find((product) => product.name === name)
+ const eliminarDelCarrito = (id) => {
+     const item = carrito.find((product) => product.id === id)
      const indice = carrito.indexOf(item)
-      carrito.splice(indice) 
+      carrito.splice(indice,1)
      cartUpdate()
  }
-
-
 contenedorCarrito.onclick = function(e){
    if(e.target && e.target.classList.contains('trashCan')){
-    const name = e.target.dataset.name 
-    eliminarDelCarrito(name)
+    const id = e.target.dataset.name 
+    eliminarDelCarrito(id)
    }
 }
 const sumaTotal = () => {
@@ -243,6 +241,5 @@ const init = () => {
     products.addEventListener("click", agregarAlCarrito)
     botonVaciar.addEventListener("click", vaciarCarritoConfirm)
     botonFinalizarCompra.addEventListener("click", finalizarCompraConfirm)
-    // deleteOne.addEventListener("click", eliminarDelCarrito)
 };
 init()
