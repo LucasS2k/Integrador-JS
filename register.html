@@ -39,19 +39,22 @@
           </div>
     </header>
     <main>
-    <form action="" class="section_form">
+    <form action="" class="section_form" id="form">
         <div class="formulario">
         <div class="input">
             <label for="name"> Email </label>
-        <input type="email" required placeholder="Ingrese su email" name="name" class="ingreso">     
+        <input type="email" required placeholder="Ingrese su email" name="name" class="ingreso" autocomplete="on" id="email">    
+        <small></small> 
         </div>
         <div class="input">
             <label for="contraseña"> Contraseña</label>
-        <input type="password" required placeholder="Ingrese una contraseña" name="contraseña" class="ingreso">
+        <input type="password" required placeholder="Ingrese una contraseña" name="contraseña" class="ingreso" id="password">
+        <small></small>
         </div>
         <div class="input">
             <label for="repeatcontraseña">Repita su contraseña</label>
-            <input type="password" required placeholder="Repita su contraseña" name="repeatcontraseña" class="ingreso">
+            <input type="password" required placeholder="Repita su contraseña" name="repeatcontraseña" class="ingreso" id="secondPassword">
+            <small></small>
         </div>
         <div>
             Deseo recibir novedades a mi casilla de correo<input type="checkbox" class="checkbox">
@@ -81,6 +84,7 @@
         </ul>
       </div>
        </footer>
-       <script src="./utility.js"></script>
+       <script src="./register.js"></script>
+       <!-- <script src="./utility.js"></script> -->
 </body>
 </html>

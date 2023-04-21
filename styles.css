@@ -14,6 +14,8 @@
     --amarillo:#F9C500;
     --blanco:#FFFFFF;
     --gris:#242424;
+    --rojo: #ED4337;
+    --verde: #5CB85C;
 }
 .header-logo{
     height: 60px;
@@ -312,6 +314,14 @@ input{
 }
 .input input:focus{
     border-bottom: 2px solid var(--amarillo);
+    outline: none;
+}
+.error{
+    border-bottom: 2px solid var(--rojo);
+    outline: none;
+}
+.success{
+    border-bottom: 2px solid var(--verde);
     outline: none;
 }
 .ayuda{
