@@ -9,7 +9,7 @@ const checkEmail = () => {
    if (isEmpty(emailInput)) {
     showError(emailInput, "El Email es obligatorio"); 
    } else if (!isEmailValid(emailValue)) {
-    showError(emailInput, "El mail no es válido");
+    showError(emailInput, "El Email no es válido");
    } else {
     showSuccess(emailInput);
     valid = true;
@@ -40,7 +40,7 @@ const checkEqual = () => {
 		showError(secondPassInput,"Las contraseñas deben coincidir "
 		);
 	} else {
-		showSuccess(passInput);
+		showSuccess(secondPassInput);
 		valid = true;
 	}
 	return valid;
@@ -55,12 +55,9 @@ const isPassSecure = (pass) => {
 	const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/;
 	return re.test(pass);
 };
-const isEqual = (pass) => {
-    if (passInput.innerHTML = secondPassInput.innerHTML)
-    return true(pass)
-    else {
-    return false
-    }
+const isEqual = () => {
+    if (passInput.value === secondPassInput.value)
+    return true
 }
 const showError = (input, message) => {
 	const ingreso = input.parentElement;
