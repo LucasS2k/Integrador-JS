@@ -1,7 +1,6 @@
 const form = document.getElementById("form");
 const emailInput = document.getElementById("email");
 const passInput = document.getElementById("password");
-const secondPassInput = document.getElementById("secondPassword");
 
 const checkEmail = () => {
   let valid = false;
@@ -25,23 +24,10 @@ const checkPassword = () => {
   } else if (!isPassSecure(password)) {
     showError(
       passInput,
-      "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un símbolo"
+      "La contraseña es incorrecta o no cumple los requisitos"
     );
   } else {
     showSuccess(passInput);
-    valid = true;
-  }
-  return valid;
-};
-const checkEqual = () => {
-  let valid = false;
-  const password = secondPassInput.value.trim();
-  if (isEmpty(password)) {
-    showError(secondPassInput, "La contraseña es obligatoria");
-  } else if (!isEqual(password)) {
-    showError(secondPassInput, "Las contraseñas deben coincidir ");
-  } else {
-    showSuccess(secondPassInput);
     valid = true;
   }
   return valid;
@@ -55,9 +41,6 @@ const isEmailValid = (email) => {
 const isPassSecure = (pass) => {
   const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/;
   return re.test(pass);
-};
-const isEqual = () => {
-  if (passInput.value === secondPassInput.value) return true;
 };
 const showError = (input, message) => {
   const ingreso = input.parentElement;
@@ -88,12 +71,9 @@ const debounce = (fn, delay = 500) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  let isUsernameValid = checkUsername();
   let isEmailValid = checkEmail();
   let isPasswordValid = checkPassword();
-  let isPassEqual = checkEqual();
-  let isFormValid =
-    isUsernameValid && isEmailValid && isPasswordValid && isPassEqual;
+  let isFormValid = isEmailValid && isPasswordValid;
   if (isFormValid) {
     form.submit();
   }
@@ -102,17 +82,11 @@ form.addEventListener(
   "input",
   debounce((e) => {
     switch (e.target.id) {
-      case "username":
-        checkUsername();
-        break;
       case "email":
         checkEmail();
         break;
       case "password":
         checkPassword();
-        break;
-      case "secondPassword":
-        checkEqual();
         break;
     }
   })

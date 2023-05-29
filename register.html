@@ -1,74 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Registrarse</title>
-</head>
+  </head>
 
-<body>
-    <header>  
-        <a href="./index.html"><img src="./integrador/Assets/magicianlogo.png" alt="" class="header-logo"></a>
-        <nav class="header_nav">        
-            <ul class="header_list_link">
-                <li><a href="./index.html"><i class="fa-solid fa-house"></i>Home</a></li>
-                <li><a href="./login.html"><i class="fa-solid fa-user"></i>Iniciar Sesión</a></li>
-                <li><a href="./register.html"> <i class="fa-regular fa-user"></i>Registrarse</a></li>
-                <li><a href="./index.html#contacto"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </nav>
-       
-            <img src="./integrador/Assets/menu.png" alt="menu" class="menuimg">
-           
-         
-        <div class="menu">
-            <ul> 
-              <li><a href="./index.html">Inicio</a></li>
-              <div class="lineagris"></div>
-              <li><a href="./login.html">Iniciar Sesión</a></li>
-              <div class="lineagris"></div>
-              <li><a href="./register.html">Registrarse</a></li>
-              <div class="lineagris"></div>
-              <li><a href="./index.html#contacto">Contacto</a></li>
-              <div class="lineagris"></div>
-             </ul>
-          </div>
+  <body>
+    <header>
+      <a href="./index.html"
+        ><img
+          src="./integrador/Assets/magicianlogo.png"
+          alt=""
+          class="header-logo"
+      /></a>
+      <nav class="header_nav">
+        <ul class="header_list_link">
+          <li>
+            <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
+          </li>
+          <li>
+            <a href="./login.html"
+              ><i class="fa-solid fa-user"></i>Iniciar Sesión</a
+            >
+          </li>
+          <li>
+            <a href="./register.html">
+              <i class="fa-regular fa-user"></i>Registrarse</a
+            >
+          </li>
+          <li>
+            <a href="./index.html#contacto"
+              ><i class="fa-solid fa-phone"></i>Contacto</a
+            >
+          </li>
+          <li>
+            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="imgContainer">
+        <i class="fa fa-bars" onclick="changeIcon(this)"></i>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="./index.html">Inicio</a></li>
+          <div class="lineagris"></div>
+          <li><a href="./login.html">Iniciar Sesión</a></li>
+          <div class="lineagris"></div>
+          <li><a href="./register.html">Registrarse</a></li>
+          <div class="lineagris"></div>
+          <li><a href="./index.html#contacto">Contacto</a></li>
+          <div class="lineagris"></div>
+        </ul>
+      </div>
     </header>
     <main>
-    <form action="" class="section_form" id="form">
+      <form action="" class="section_form" id="form">
         <div class="formulario">
-        <div class="input">
+          <div class="input">
             <label for="name"> Email </label>
-        <input type="email" required placeholder="Ingrese su email" name="name" class="ingreso" autocomplete="on" id="email">    
-        <small></small> 
-        </div>
-        <div class="input">
-            <label for="contraseña"> Contraseña</label>
-        <input type="password" required placeholder="Ingrese una contraseña" name="contraseña" class="ingreso" id="password">
-        <small></small>
-        </div>
-        <div class="input">
-            <label for="repeatcontraseña">Repita su contraseña</label>
-            <input type="password" required placeholder="Repita su contraseña" name="repeatcontraseña" class="ingreso" id="secondPassword">
+            <input
+              type="email"
+              required
+              placeholder="Ingrese su email"
+              name="name"
+              class="ingreso"
+              autocomplete="on"
+              id="email"
+            />
             <small></small>
+          </div>
+          <div class="input">
+            <label for="contraseña"> Contraseña</label>
+            <input
+              type="password"
+              required
+              placeholder="Ingrese una contraseña"
+              name="contraseña"
+              class="ingreso"
+              id="password"
+            />
+            <small></small>
+          </div>
+          <div class="input">
+            <label for="repeatcontraseña">Repita su contraseña</label>
+            <input
+              type="password"
+              required
+              placeholder="Repita su contraseña"
+              name="repeatcontraseña"
+              class="ingreso"
+              id="secondPassword"
+            />
+            <small></small>
+          </div>
+          <div>
+            Deseo recibir novedades en mi casilla de correo<input
+              type="checkbox"
+              class="checkbox"
+            />
+          </div>
+          <div>
+            He leído y acepto los términos y condiciones<input
+              type="checkbox"
+              required
+              class="checkbox"
+            />
+          </div>
+          <input type="submit" class="submitbutton" />
         </div>
-        <div>
-            Deseo recibir novedades en mi casilla de correo<input type="checkbox" class="checkbox">
-        </div>
-        <div>    
-        He leído y acepto los términos y condiciones<input type="checkbox" required class="checkbox">
-        </div>
-        <input type="submit" class="submitbutton">
-        </div>
-        
-        </form>
+      </form>
     </main>
     <footer id="contacto">
-        <div>
+      <div>
         <ul class="footerlist">
           <li><a href="#">Teléfono</a></li>
           <li><a href="#">Dirección</a></li>
@@ -78,12 +132,18 @@
       </div>
       <div class="footerlogos">
         <ul class="footerlogos">
-         <li><a href="#"><i class="fa-brands fa-facebook facebook"></i></a></li>
-         <li><a href="#"><i class="fa-brands fa-whatsapp whatsapp"></i></a></li>
-         <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+          <li>
+            <a href="#"><i class="fa-brands fa-facebook facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-brands fa-whatsapp whatsapp"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </li>
         </ul>
       </div>
-       </footer>
-       <script src="./register.js"></script>
-</body>
+    </footer>
+    <script src="./utility.js"></script>
+  </body>
 </html>
